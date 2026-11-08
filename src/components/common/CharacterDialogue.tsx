@@ -12,7 +12,7 @@ export const CharacterDialogue: React.FC<CharacterDialogueProps> = ({ speaker, t
       <div className="flex items-start gap-3 my-3 p-3.5 bg-[#dceeff] border-2 border-[#2a2825] rounded-xl shadow-[3px_3px_0_rgba(42,40,37,0.12)]">
         {/* Ray Avatar - Cute Photon Packet with Eyes & Smile */}
         <div className="shrink-0 w-11 h-11 bg-[#bde0fe] border-2 border-[#2a2825] rounded-full flex items-center justify-center relative overflow-hidden">
-          <svg viewBox="0 0 40 40" className="w-8 h-8 select-none">
+          <svg viewBox="0 0 40 40" width="32" height="32" className="w-8 h-8 select-none shrink-0">
             {/* Photon droplet body */}
             <path
               d="M 20 6 C 20 6 9 20 9 27 A 11 11 0 0 0 31 27 C 31 20 20 6 20 6 Z"
@@ -49,7 +49,7 @@ export const CharacterDialogue: React.FC<CharacterDialogueProps> = ({ speaker, t
       <div className="flex items-start gap-3 my-3 p-3.5 bg-[#e2f3e7] border-2 border-[#2a2825] rounded-xl shadow-[3px_3px_0_rgba(42,40,37,0.12)]">
         {/* INSAT Avatar - Cute Satellite with Solar Panels & Smiling Face */}
         <div className="shrink-0 w-11 h-11 bg-[#c8e6c9] border-2 border-[#2a2825] rounded-xl flex items-center justify-center relative">
-          <svg viewBox="0 0 48 36" className="w-9 h-7 select-none">
+          <svg viewBox="0 0 48 36" width="36" height="28" className="w-9 h-7 select-none shrink-0">
             {/* Left Solar Panel */}
             <rect x="2" y="10" width="10" height="16" rx="1.5" fill="#81c784" stroke="#2a2825" strokeWidth="1.8" />
             <line x1="7" y1="10" x2="7" y2="26" stroke="#2a2825" strokeWidth="1.2" />

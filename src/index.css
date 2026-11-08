@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../index.html";
+@source "./**/*.{ts,tsx}";
 @import "katex/dist/katex.min.css";
 
 :root {
