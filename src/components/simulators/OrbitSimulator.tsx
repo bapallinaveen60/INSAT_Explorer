@@ -3,7 +3,7 @@ import { Play, Pause, RotateCcw, Eye, Compass, Satellite, Sparkles } from 'lucid
 
 export const OrbitSimulator: React.FC = () => {
   const [hour, setHour] = useState<number>(12); // 0 - 24 hours
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [orbitMode, setOrbitMode] = useState<'geo' | 'leo' | 'both'>('both');
   const [showFootprint, setShowFootprint] = useState<boolean>(true);
   const [showRayPath, setShowRayPath] = useState<boolean>(true);
@@ -79,7 +79,10 @@ export const OrbitSimulator: React.FC = () => {
             <span>{isPlaying ? 'Pause' : 'Play 24h'}</span>
           </button>
           <button
-            onClick={() => setHour(12)}
+            onClick={() => {
+              setIsPlaying(false);
+              setHour(12);
+            }}
             className="p-1.5 rounded-lg bg-[#fffdf8] hover:bg-[#faf8f2] border-2 border-[#2a2825] text-[#1d1c19] text-xs shadow-[2px_2px_0_#2a2825] transition-all cursor-pointer active:translate-y-0.5"
             title="Reset to 12:00 UTC"
           >
@@ -216,10 +219,10 @@ export const OrbitSimulator: React.FC = () => {
         <div className="lg:col-span-4 space-y-4">
           {/* Time Scrubber */}
           <div className="bg-[#f4f1ea] border-2 border-[#2a2825] p-3.5 rounded-xl shadow-[2px_2px_0_rgba(42,40,37,0.1)]">
-            <div className="flex justify-between items-center text-xs font-mono mb-2">
-              <span className="text-[#53504a] font-bold">Time Elapsed:</span>
-              <span className="text-[#10508f] font-black text-sm bg-white px-2 py-0.5 rounded border border-[#2a2825]">
-                {Math.floor(hour)}h {Math.round((hour % 1) * 60)}m UTC
+            <div className="flex justify-between items-center text-xs font-mono mb-2 min-h-[30px]">
+              <span className="text-[#53504a] font-bold shrink-0">Time Elapsed:</span>
+              <span className="text-[#10508f] font-black text-sm bg-white px-2.5 py-0.5 rounded border border-[#2a2825] whitespace-nowrap tabular-nums min-w-[95px] text-center shrink-0 shadow-xs">
+                {String(Math.floor(hour)).padStart(2, '0')}:{String(Math.round((hour % 1) * 60)).padStart(2, '0')} UTC
               </span>
             </div>
             <input
