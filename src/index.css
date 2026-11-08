@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+:root {
+  --paper: #faf8f2;
+  --page: #fffdf8;
+  --tint-a: #fdf6dd;
+  --tint-b: #eff1f4;
+  --tint-c: #fdf0f6;
+  --tint-d: #e9f5ec;
+  --ink: #1d1c19;
+  --ink2: #53504a;
+  --ink3: #86817a;
+  --line: #2a2825;
+  --line-soft: #b9b3a8;
+  --hd-main: #10508f;
+  --hd-det: #1b6b3c;
+  --hd-try: #8a3c8f;
+  --flow: #d6197f;
+  --dot-c: #2a7fd4;
+  --dot-fill: #dceeff;
+  --core-c: #1d7a4a;
+  --core-fill: #e2f3e7;
+  --shadow: 3px 3px 0 rgba(42, 40, 37, 0.15);
+  
+  --f-ui: "Nunito Sans", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --f-hand: "Caveat", "Bradley Hand", cursive;
+  --f-bam: "Permanent Marker", "Comic Sans MS", cursive;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-ui);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom font utility classes */
+.font-hand {
+  font-family: var(--f-hand);
+}
+
+.font-bam {
+  font-family: var(--f-bam);
+}
+
+.font-mono {
+  font-family: var(--f-mono);
+}
+
+.font-ui {
+  font-family: var(--f-ui);
+}
+
+/* Rain from Orbit style paper card */
+.book-box {
+  background: var(--page);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+/* Splat text style */
+.splat-text {
+  font-family: var(--f-bam);
+  color: var(--flow);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  display: inline-block;
+  transform: rotate(-3deg);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1ede2;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7c0b3;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9d9585;
+}
