@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Eye, SplitSquareVertical, Grid, Layers, Crosshair, Sparkles, Sun, Moon } from 'lucide-react';
+import { Eye, SplitSquareVertical, Grid, Layers, Crosshair, Sparkles } from 'lucide-react';
 import { INSAT_IMAGER_CHANNELS } from '../../data/channelsData';
 import { PixelInspectionData } from '../../types/satellite';
-import { useTheme } from '../../context/ThemeContext';
 
 export const SixChannelSandbox: React.FC = () => {
-  const { isNight, toggleTheme } = useTheme();
   const [viewMode, setViewMode] = useState<'single' | 'split' | 'four' | 'six'>('split');
   const [activeChannelA, setActiveChannelA] = useState<string>('vis');
   const [activeChannelB, setActiveChannelB] = useState<string>('tir1');
@@ -217,15 +215,30 @@ export const SixChannelSandbox: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         {/* Imagery Viewer */}
         <div className="lg:col-span-7 bg-[#faf8f2] border-2 border-[#2a2825] rounded-xl p-3 relative overflow-hidden shadow-inner">
-          {/* Channel Selectors for Comparison & Day/Night Toggle */}
-          <div className="flex justify-between items-center text-xs font-mono mb-2 flex-wrap gap-2">
-            <div className="flex items-center gap-3">
+          {/* Channel Selectors for Comparison */}
+          <div className="flex justify-between items-center text-xs font-mono mb-2">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[#53504a] font-bold">Layer A:</span>
+              <select
+                value={activeChannelA}
+                onChange={(e) => setActiveChannelA(e.target.value)}
+                className="bg-white border-2 border-[#2a2825] text-[#10508f] font-bold rounded-md px-2 py-0.5 cursor-pointer"
+              >
+                {INSAT_IMAGER_CHANNELS.map((ch) => (
+                  <option key={ch.id} value={ch.id}>
+                    {ch.shortName}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {viewMode === 'split' && (
               <div className="flex items-center gap-1.5">
-                <span className="text-[#53504a] font-bold">Layer A:</span>
+                <span className="text-[#53504a] font-bold">Layer B:</span>
                 <select
-                  value={activeChannelA}
-                  onChange={(e) => setActiveChannelA(e.target.value)}
-                  className="bg-white border-2 border-[#2a2825] text-[#10508f] font-bold rounded-md px-2 py-0.5 cursor-pointer"
+                  value={activeChannelB}
+                  onChange={(e) => setActiveChannelB(e.target.value)}
+                  className="bg-white border-2 border-[#2a2825] text-[#8a3c8f] font-bold rounded-md px-2 py-0.5 cursor-pointer"
                 >
                   {INSAT_IMAGER_CHANNELS.map((ch) => (
                     <option key={ch.id} value={ch.id}>
@@ -234,47 +247,7 @@ export const SixChannelSandbox: React.FC = () => {
                   ))}
                 </select>
               </div>
-
-              {viewMode === 'split' && (
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[#53504a] font-bold">Layer B:</span>
-                  <select
-                    value={activeChannelB}
-                    onChange={(e) => setActiveChannelB(e.target.value)}
-                    className="bg-white border-2 border-[#2a2825] text-[#8a3c8f] font-bold rounded-md px-2 py-0.5 cursor-pointer"
-                  >
-                    {INSAT_IMAGER_CHANNELS.map((ch) => (
-                      <option key={ch.id} value={ch.id}>
-                        {ch.shortName}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              )}
-            </div>
-
-            {/* Quick Day/Night Change Icon Button */}
-            <button
-              onClick={toggleTheme}
-              title={isNight ? 'Switch to Day Mode (Solar reflectance active)' : 'Switch to Night Mode (Terrestrial IR emission active)'}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md border-2 font-bold transition-all cursor-pointer text-[11px] shadow-[1px_1px_0_#2a2825] active:translate-y-0.5 ${
-                isNight
-                  ? 'bg-[#1e293b] text-cyan-200 border-[#475569] hover:bg-[#334155]'
-                  : 'bg-[#fffdf8] text-amber-900 border-[#2a2825] hover:bg-[#fef3c7]'
-              }`}
-            >
-              {isNight ? (
-                <>
-                  <Moon className="w-3.5 h-3.5 text-cyan-300 fill-cyan-400" />
-                  <span>Night: Pure IR</span>
-                </>
-              ) : (
-                <>
-                  <Sun className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
-                  <span>Day: Solar VIS</span>
-                </>
-              )}
-            </button>
+            )}
           </div>
 
           {/* Simulated Satellite Frame Canvas */}
@@ -454,32 +427,15 @@ export const SixChannelSandbox: React.FC = () => {
             <div className="grid grid-cols-2 gap-2 text-[11px]">
               <div className="p-2 bg-white rounded-lg border-2 border-[#2a2825]">
                 <div className="text-[#0284c7] font-black">1. VIS (0.65 µm)</div>
-                <div className="text-[#1d1c19] font-black text-sm">
-                  {isNight ? (
-                    <span className="text-[#86817a] text-xs font-mono">0.0% (Night: Dark)</span>
-                  ) : (
-                    `${inspectedPixel.visReflectance}% Albedo`
-                  )}
-                </div>
+                <div className="text-[#1d1c19] font-black text-sm">{inspectedPixel.visReflectance}% Albedo</div>
               </div>
               <div className="p-2 bg-white rounded-lg border-2 border-[#2a2825]">
                 <div className="text-[#4338ca] font-black">2. SWIR (1.62 µm)</div>
-                <div className="text-[#1d1c19] font-black text-sm">
-                  {isNight ? (
-                    <span className="text-[#86817a] text-xs font-mono">0.0% (Night: Dark)</span>
-                  ) : (
-                    `${inspectedPixel.swirReflectance}% Albedo`
-                  )}
-                </div>
+                <div className="text-[#1d1c19] font-black text-sm">{inspectedPixel.swirReflectance}% Albedo</div>
               </div>
               <div className="p-2 bg-white rounded-lg border-2 border-[#2a2825]">
                 <div className="text-[#d97706] font-black">3. MIR (3.90 µm)</div>
-                <div className="text-[#1d1c19] font-black text-sm">
-                  {inspectedPixel.mirTempK} K
-                  <span className="text-[9px] block text-[#53504a] font-normal leading-tight">
-                    {isNight ? 'Terrestrial emission' : 'Reflected solar + emission'}
-                  </span>
-                </div>
+                <div className="text-[#1d1c19] font-black text-sm">{inspectedPixel.mirTempK} K</div>
               </div>
               <div className="p-2 bg-white rounded-lg border-2 border-[#2a2825]">
                 <div className="text-[#0d9488] font-black">4. WV (6.80 µm)</div>

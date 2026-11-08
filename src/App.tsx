@@ -7,10 +7,8 @@ import { AtmosphericPhysicsLabView } from './components/views/AtmosphericPhysics
 import { AlgorithmLabView } from './components/views/AlgorithmLabView';
 import { DataStudioView } from './components/views/DataStudioView';
 import { COURSE_CHAPTERS } from './data/courseChapters';
-import { ThemeProvider } from './context/ThemeContext';
-import { DayNightToggle, DayNightToast } from './components/common/DayNightToggle';
 
-function MainApp() {
+export function App() {
   const [currentMode, setCurrentMode] = useState<AppMode>('guide');
   const [currentChapterId, setCurrentChapterId] = useState<number>(1);
   const [currentPageId, setCurrentPageId] = useState<string>('1.1');
@@ -88,8 +86,8 @@ function MainApp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f2] text-[#1d1c19] flex flex-col font-sans selection:bg-[#fed7aa] selection:text-[#9a3412] transition-colors">
-      {/* Top Telemetry Mission Navigation Bar with Day / Night Switch Icon */}
+    <div className="min-h-screen bg-[#faf8f2] text-[#1d1c19] flex flex-col font-sans selection:bg-[#fed7aa] selection:text-[#9a3412]">
+      {/* Top Telemetry Mission Navigation Bar */}
       <Navbar
         currentMode={currentMode}
         onSelectMode={handleSelectMode}
@@ -118,21 +116,7 @@ function MainApp() {
 
         {currentMode === 'data-studio' && <DataStudioView />}
       </div>
-
-      {/* Floating Day / Night Mode Quick Switch Icon */}
-      <DayNightToggle variant="floating" />
-
-      {/* Meteorological Day/Night Educational Toast Banner */}
-      <DayNightToast />
     </div>
-  );
-}
-
-export function App() {
-  return (
-    <ThemeProvider>
-      <MainApp />
-    </ThemeProvider>
   );
 }
 

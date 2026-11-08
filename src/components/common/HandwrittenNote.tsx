@@ -10,9 +10,9 @@ export const HandwrittenNote: React.FC<HandwrittenNoteProps> = ({
   children
 }) => {
   return (
-    <div className="my-3 text-[#d6197f] dark:text-[#f472b6] font-hand text-lg md:text-xl font-bold leading-snug">
+    <div className="my-3 text-[#d6197f] font-hand text-lg md:text-xl font-bold leading-snug">
       <span className="italic mr-1.5">{prefix}</span>
-      <span className="text-[#53504a] dark:text-[#fde047]">{children}</span>
+      <span className="text-[#53504a]">{children}</span>
     </div>
   );
 };

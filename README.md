@@ -43,23 +43,6 @@ $$\mathbf{Question} \longrightarrow \mathbf{Intuition} \longrightarrow \mathbf{V
 
 ---
 
-## ☀️ ⇄ 🌙 Day & Night Dual-Theme Engine
-
-A dedicated **Day & Night Switch** is integrated directly into the top header, floating corner, and interactive simulators.
-
-| Mode | Theme Aesthetic | Meteorological Science & Sensor Physics |
-| :--- | :--- | :--- |
-| **☀️ Day Mode** | Warm Cream Paper Field Guide (`#faf8f2`) | **Solar Reflectance Active**: Visible (VIS 0.65 µm) and Shortwave IR (SWIR 1.62 µm) channels receive reflected solar photons to observe cloud albedo and ice vs. water droplet phase. |
-| **🌙 Night Mode** | Deep Midnight Slate Observatory (`#0b1120`) | **Terrestrial Thermal Emission Active**: VIS and SWIR channels darken ($0.0\%$ albedo without the sun). Geostationary meteorologists rely on Thermal IR (TIR-1 10.8 µm) and Water Vapour (WV 6.8 µm) for 24/7 continuous storm monitoring. |
-
-*Features:*
-- Seamless toggle with rotation micro-animations and custom dark scrollbars.
-- Immediate educational toast alert explaining the day/night sensor transition.
-- Persistent user preference stored across browser sessions in `localStorage`.
-- High-contrast KaTeX equations and crisp SVG vector rendering in both themes.
-
----
-
 ## 📚 Curriculum Chapters & Interactive Simulators
 
 ### 📖 Chapter 1: The Geostationary Eye at 36,000 km

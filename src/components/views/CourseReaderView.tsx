@@ -175,19 +175,19 @@ export const CourseReaderView: React.FC<CourseReaderViewProps> = ({
         </div>
 
         {/* Page Title & Subtitle */}
-        <div className="mb-6 flex flex-col md:flex-row md:items-baseline justify-between gap-2 border-b-2 border-[#b9b3a8]/50 dark:border-[#334155] pb-4">
+        <div className="mb-6 flex flex-col md:flex-row md:items-baseline justify-between gap-2 border-b-2 border-[#b9b3a8]/50 pb-4">
           <div>
-            <h2 className="text-2xl md:text-3xl font-black text-[#1d1c19] dark:text-[#f8fafc] tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-black text-[#1d1c19] tracking-tight">
               {currentPage.title}
             </h2>
             {currentPage.subtitle && (
-              <p className="text-sm md:text-base text-[#53504a] dark:text-[#cbd5e1] mt-1 font-medium leading-relaxed">
+              <p className="text-sm md:text-base text-[#53504a] mt-1 font-medium leading-relaxed">
                 {currentPage.subtitle}
               </p>
             )}
           </div>
           {currentPage.isSimulatorPage && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#f3e8ff] dark:bg-[#3b174a] border-2 border-[#8a3c8f] dark:border-[#c084fc] text-[#8a3c8f] dark:text-[#e9d5ff] font-mono text-xs font-bold shrink-0 self-start">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#f3e8ff] border-2 border-[#8a3c8f] text-[#8a3c8f] font-mono text-xs font-bold shrink-0 self-start">
               <Sparkles className="w-3.5 h-3.5" />
               Interactive Lab
             </span>
@@ -211,10 +211,10 @@ export const CourseReaderView: React.FC<CourseReaderViewProps> = ({
 
                   {/* Bullet points */}
                   {section.bulletPoints && (
-                    <ul className="space-y-2 my-3 pl-2 text-xs md:text-sm text-[#1d1c19] dark:text-[#f1f5f9]">
+                    <ul className="space-y-2 my-3 pl-2 text-xs md:text-sm text-[#1d1c19]">
                       {section.bulletPoints.map((bp, bpIdx) => (
                         <li key={bpIdx} className="flex items-start gap-2.5">
-                          <span className="text-[#10508f] dark:text-[#38bdf8] font-black shrink-0 text-base leading-none">•</span>
+                          <span className="text-[#10508f] font-black shrink-0 text-base leading-none">•</span>
                           <span className="leading-relaxed">{bp}</span>
                         </li>
                       ))}
@@ -223,16 +223,16 @@ export const CourseReaderView: React.FC<CourseReaderViewProps> = ({
 
                   {/* Formulas */}
                   {section.formulas && section.formulas.map((f, fIdx) => (
-                    <div key={fIdx} className="my-3.5 p-4 bg-[#f4f1ea] dark:bg-[#1a2638] border-2 border-[#2a2825] dark:border-[#334155] rounded-xl shadow-[2px_2px_0_rgba(42,40,37,0.1)] transition-colors">
-                      <div className="text-[11px] font-mono uppercase tracking-wider text-[#10508f] dark:text-[#38bdf8] font-black mb-1.5 flex items-center justify-between">
+                    <div key={fIdx} className="my-3.5 p-4 bg-[#f4f1ea] border-2 border-[#2a2825] rounded-xl shadow-[2px_2px_0_rgba(42,40,37,0.1)]">
+                      <div className="text-[11px] font-mono uppercase tracking-wider text-[#10508f] font-black mb-1.5 flex items-center justify-between">
                         <span>{f.label}</span>
-                        <span className="text-[10px] text-[#53504a] dark:text-[#94a3b8] font-normal">Physical Equation</span>
+                        <span className="text-[10px] text-[#53504a] font-normal">Physical Equation</span>
                       </div>
                       <div className="py-2 overflow-x-auto text-center">
-                        <KaTeXMath math={f.math} block={true} className="text-[#1d1c19] dark:text-[#f8fafc] text-sm md:text-base" />
+                        <KaTeXMath math={f.math} block={true} className="text-[#1d1c19] text-sm md:text-base" />
                       </div>
                       {f.explanation && (
-                        <div className="text-xs text-[#53504a] dark:text-[#cbd5e1] mt-2 border-t border-[#b9b3a8] dark:border-[#334155] pt-2 font-medium leading-relaxed">
+                        <div className="text-xs text-[#53504a] mt-2 border-t border-[#b9b3a8] pt-2 font-medium leading-relaxed">
                           {f.explanation}
                         </div>
                       )}
@@ -326,25 +326,25 @@ export const CourseReaderView: React.FC<CourseReaderViewProps> = ({
         )}
 
         {/* Bottom Navigation Pagination Bar */}
-        <div className="mt-10 pt-6 border-t-2 border-[#b9b3a8] dark:border-[#334155] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+        <div className="mt-10 pt-6 border-t-2 border-[#b9b3a8] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <button
             onClick={handlePrevPage}
             disabled={chapterId === 1 && activePageIndex === 0}
             className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl border-2 transition-all cursor-pointer font-bold ${
               chapterId === 1 && activePageIndex === 0
                 ? 'opacity-30 border-[#b9b3a8] text-[#86817a] cursor-not-allowed bg-transparent'
-                : 'border-[#2a2825] dark:border-[#334155] bg-[#fffdf8] dark:bg-[#151e2e] hover:bg-[#faf8f2] dark:hover:bg-[#1e293b] text-[#1d1c19] dark:text-[#f1f5f9] shadow-[2px_2px_0_#2a2825] active:translate-y-0.5'
+                : 'border-[#2a2825] bg-[#fffdf8] hover:bg-[#faf8f2] text-[#1d1c19] shadow-[2px_2px_0_#2a2825] active:translate-y-0.5'
             }`}
           >
-            <ChevronLeft className="w-4 h-4 text-[#10508f] dark:text-[#38bdf8]" />
+            <ChevronLeft className="w-4 h-4 text-[#10508f]" />
             <span>Previous Page</span>
           </button>
 
-          <div className="text-center text-[#53504a] dark:text-[#cbd5e1]">
-            <span className="font-bold text-[#1d1c19] dark:text-[#f8fafc]">
+          <div className="text-center text-[#53504a]">
+            <span className="font-bold text-[#1d1c19]">
               Chapter {currentChapter.id} &bull; Page {activePageIndex + 1} of {currentChapter.pages.length}
             </span>
-            <div className="text-[11px] text-[#86817a] dark:text-[#94a3b8] font-hand text-sm mt-0.5">
+            <div className="text-[11px] text-[#86817a] font-hand text-sm mt-0.5">
               Turn pages with &larr; and &rarr; arrow keys
             </div>
           </div>
@@ -355,7 +355,7 @@ export const CourseReaderView: React.FC<CourseReaderViewProps> = ({
             className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl border-2 transition-all cursor-pointer font-bold ${
               chapterId === COURSE_CHAPTERS.length && activePageIndex === currentChapter.pages.length - 1
                 ? 'opacity-30 border-[#b9b3a8] text-[#86817a] cursor-not-allowed bg-transparent'
-                : 'border-[#2a2825] dark:border-[#334155] bg-[#10508f] hover:bg-[#0c3d6e] text-white shadow-[2px_2px_0_#2a2825] active:translate-y-0.5'
+                : 'border-[#2a2825] bg-[#10508f] hover:bg-[#0c3d6e] text-white shadow-[2px_2px_0_#2a2825] active:translate-y-0.5'
             }`}
           >
             <span>Next Page</span>
@@ -364,25 +364,25 @@ export const CourseReaderView: React.FC<CourseReaderViewProps> = ({
         </div>
 
         {/* Printed Book Footer Attribution */}
-        <div className="mt-8 text-center text-xs text-[#86817a] dark:text-[#94a3b8] font-mono border-t border-[#b9b3a8]/40 dark:border-[#334155] pt-4">
+        <div className="mt-8 text-center text-xs text-[#86817a] font-mono border-t border-[#b9b3a8]/40 pt-4">
           <span>INSAT Explorer &mdash; an illustrated guide to INSAT-3D/3DR satellite meteorology</span>
         </div>
       </main>
 
       {/* Table of Contents Drawer */}
       {showToc && (
-        <div className="fixed inset-0 z-50 bg-[#1d1c19]/60 dark:bg-black/75 backdrop-blur-xs flex justify-end">
-          <div className="w-full max-w-md bg-[#faf8f2] dark:bg-[#0b1120] border-l-2 border-[#2a2825] dark:border-[#334155] h-full p-6 overflow-y-auto flex flex-col shadow-2xl">
-            <div className="flex items-center justify-between border-b-2 border-[#2a2825] dark:border-[#334155] pb-4 mb-4">
+        <div className="fixed inset-0 z-50 bg-[#1d1c19]/50 backdrop-blur-xs flex justify-end">
+          <div className="w-full max-w-md bg-[#faf8f2] border-l-2 border-[#2a2825] h-full p-6 overflow-y-auto flex flex-col shadow-2xl">
+            <div className="flex items-center justify-between border-b-2 border-[#2a2825] pb-4 mb-4">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-[#10508f] dark:text-[#38bdf8]" />
-                <h3 className="font-mono font-black text-sm text-[#1d1c19] dark:text-[#f8fafc] uppercase tracking-wider">
+                <BookOpen className="w-5 h-5 text-[#10508f]" />
+                <h3 className="font-mono font-black text-sm text-[#1d1c19] uppercase tracking-wider">
                   Course Chapters
                 </h3>
               </div>
               <button
                 onClick={() => setShowToc(false)}
-                className="w-8 h-8 rounded-lg bg-[#fffdf8] dark:bg-[#151e2e] border-2 border-[#2a2825] dark:border-[#334155] text-[#1d1c19] dark:text-[#f8fafc] hover:bg-[#f4f1ea] dark:hover:bg-[#1e293b] font-black text-base flex items-center justify-center cursor-pointer shadow-[2px_2px_0_#2a2825]"
+                className="w-8 h-8 rounded-lg bg-[#fffdf8] border-2 border-[#2a2825] text-[#1d1c19] hover:bg-[#f4f1ea] font-black text-base flex items-center justify-center cursor-pointer shadow-[2px_2px_0_#2a2825]"
               >
                 &times;
               </button>
@@ -392,11 +392,11 @@ export const CourseReaderView: React.FC<CourseReaderViewProps> = ({
               {COURSE_CHAPTERS.map((chap) => {
                 const isCurrentChap = chap.id === chapterId;
                 return (
-                  <div key={chap.id} className="border-2 border-[#2a2825] dark:border-[#334155] rounded-xl p-3.5 bg-[#fffdf8] dark:bg-[#151e2e] shadow-[2px_2px_0_rgba(42,40,37,0.1)]">
-                    <div className="text-[10px] font-mono text-[#10508f] dark:text-[#38bdf8] font-bold uppercase mb-0.5">
+                  <div key={chap.id} className="border-2 border-[#2a2825] rounded-xl p-3.5 bg-[#fffdf8] shadow-[2px_2px_0_rgba(42,40,37,0.1)]">
+                    <div className="text-[10px] font-mono text-[#10508f] font-bold uppercase mb-0.5">
                       CHAPTER {chap.numberString}
                     </div>
-                    <div className="text-xs font-bold text-[#1d1c19] dark:text-[#f8fafc] mb-2">
+                    <div className="text-xs font-bold text-[#1d1c19] mb-2">
                       {chap.title}
                     </div>
                     <div className="space-y-1">
@@ -412,7 +412,7 @@ export const CourseReaderView: React.FC<CourseReaderViewProps> = ({
                             className={`w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-mono transition-all flex items-center justify-between cursor-pointer border ${
                               isCurrentPage
                                 ? 'bg-[#10508f] text-white font-bold border-[#2a2825] shadow-[1px_1px_0_#2a2825]'
-                                : 'bg-[#faf8f2] dark:bg-[#0b1120] text-[#53504a] dark:text-[#cbd5e1] border-[#b9b3a8]/60 dark:border-[#334155] hover:border-[#2a2825] dark:hover:border-[#38bdf8] hover:text-[#1d1c19] dark:hover:text-[#f8fafc]'
+                                : 'bg-[#faf8f2] text-[#53504a] border-[#b9b3a8]/60 hover:border-[#2a2825] hover:text-[#1d1c19]'
                             }`}
                           >
                             <span className="truncate">{pIdx + 1}. {pg.headerBarBadge}</span>
