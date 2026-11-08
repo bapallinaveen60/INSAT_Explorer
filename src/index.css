@@ -31,6 +31,31 @@
   --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 }
 
+:root.dark,
+[data-theme="night"],
+html.dark {
+  --paper: #0b1120;
+  --page: #151e2e;
+  --tint-a: #1e293b;
+  --tint-b: #1e293b;
+  --tint-c: #2a1b2d;
+  --tint-d: #132e22;
+  --ink: #f1f5f9;
+  --ink2: #94a3b8;
+  --ink3: #64748b;
+  --line: #334155;
+  --line-soft: #475569;
+  --hd-main: #0c4a6e;
+  --hd-det: #166534;
+  --hd-try: #701a75;
+  --flow: #f43f5e;
+  --dot-c: #38bdf8;
+  --dot-fill: #0c4a6e;
+  --core-c: #4ade80;
+  --core-fill: #064e3b;
+  --shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
 body {
   background-color: var(--paper);
   color: var(--ink);
@@ -38,6 +63,7 @@ body {
   line-height: 1.5;
   margin: 0;
   padding: 0;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* Custom font utility classes */
@@ -64,6 +90,7 @@ body {
   border-radius: 12px;
   box-shadow: var(--shadow);
   position: relative;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 /* Splat text style */
@@ -74,6 +101,83 @@ body {
   line-height: 1;
   display: inline-block;
   transform: rotate(-3deg);
+}
+
+/* Night Mode Overrides for High Contrast & Smooth Field Observation */
+html.dark body {
+  background-color: #0b1120;
+  color: #f1f5f9;
+}
+
+html.dark .bg-\[\#faf8f2\] {
+  background-color: #0b1120 !important;
+}
+
+html.dark .bg-\[\#fffdf8\] {
+  background-color: #151e2e !important;
+}
+
+html.dark .bg-white {
+  background-color: #1a2538 !important;
+}
+
+html.dark .text-\[\#1d1c19\] {
+  color: #f1f5f9 !important;
+}
+
+html.dark .text-\[\#53504a\] {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-\[\#86817a\] {
+  color: #64748b !important;
+}
+
+html.dark .border-\[\#2a2825\] {
+  border-color: #334155 !important;
+}
+
+html.dark .border-\[\#b9b3a8\] {
+  border-color: #475569 !important;
+}
+
+html.dark .shadow-\[2px_2px_0_\#2a2825\] {
+  box-shadow: 2px 2px 0 #1e293b !important;
+}
+
+html.dark .shadow-\[3px_3px_0_rgba\(42\,40\,37\,0\.15\)\] {
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+html.dark .shadow-\[3px_3px_0_\#2a2825\] {
+  box-shadow: 3px 3px 0 #1e293b !important;
+}
+
+html.dark .shadow-\[4px_4px_0_\#2a2825\] {
+  box-shadow: 4px 4px 0 #020617 !important;
+}
+
+html.dark .book-box {
+  background-color: #151e2e !important;
+  border-color: #334155 !important;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+html.dark .katex {
+  color: #f1f5f9 !important;
+}
+
+/* Slow Sun Spin */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
 }
 
 /* Custom scrollbars */
@@ -90,4 +194,15 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #9d9585;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { COURSE_CHAPTERS } from '../../data/courseChapters';
 import { BookOpen, ChevronRight, Menu, Compass } from 'lucide-react';
+import { DayNightToggle } from './DayNightToggle';
 
 export type AppMode = 'guide' | 'satellite-lab' | 'channel-explorer' | 'physics-lab' | 'algorithm-lab' | 'data-studio';
 
@@ -22,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const currentChapter = COURSE_CHAPTERS.find(c => c.id === currentChapterId) || COURSE_CHAPTERS[0];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#faf8f2] border-b-2 border-[#b9b3a8] px-4 py-2.5">
+    <header className="sticky top-0 z-50 bg-[#faf8f2] border-b-2 border-[#b9b3a8] px-4 py-2.5 transition-colors">
       <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Book Title & Series Badge */}
         <div className="flex items-center gap-3">
@@ -70,58 +71,66 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </div>
 
-        {/* Labs Quick Jump */}
-        <div className="hidden lg:flex items-center gap-1 pl-2 border-l-2 border-[#b9b3a8] text-xs font-mono">
-          <button
-            onClick={() => onSelectMode('satellite-lab')}
-            className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
-              currentMode === 'satellite-lab'
-                ? 'bg-[#1b6b3c] text-white'
-                : 'text-[#53504a] hover:text-[#1d1c19]'
-            }`}
-          >
-            Satellite
-          </button>
-          <button
-            onClick={() => onSelectMode('channel-explorer')}
-            className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
-              currentMode === 'channel-explorer'
-                ? 'bg-[#1b6b3c] text-white'
-                : 'text-[#53504a] hover:text-[#1d1c19]'
-            }`}
-          >
-            Channels
-          </button>
-          <button
-            onClick={() => onSelectMode('physics-lab')}
-            className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
-              currentMode === 'physics-lab'
-                ? 'bg-[#1b6b3c] text-white'
-                : 'text-[#53504a] hover:text-[#1d1c19]'
-            }`}
-          >
-            Physics
-          </button>
-          <button
-            onClick={() => onSelectMode('algorithm-lab')}
-            className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
-              currentMode === 'algorithm-lab'
-                ? 'bg-[#1b6b3c] text-white'
-                : 'text-[#53504a] hover:text-[#1d1c19]'
-            }`}
-          >
-            Algorithms
-          </button>
-          <button
-            onClick={() => onSelectMode('data-studio')}
-            className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
-              currentMode === 'data-studio'
-                ? 'bg-[#1b6b3c] text-white'
-                : 'text-[#53504a] hover:text-[#1d1c19]'
-            }`}
-          >
-            Data Studio
-          </button>
+        {/* Right Section: Labs Quick Jump + Day & Night Toggle */}
+        <div className="flex items-center gap-2">
+          {/* Labs Quick Jump */}
+          <div className="hidden lg:flex items-center gap-1 pl-2 border-l-2 border-[#b9b3a8] text-xs font-mono">
+            <button
+              onClick={() => onSelectMode('satellite-lab')}
+              className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
+                currentMode === 'satellite-lab'
+                  ? 'bg-[#1b6b3c] text-white'
+                  : 'text-[#53504a] hover:text-[#1d1c19]'
+              }`}
+            >
+              Satellite
+            </button>
+            <button
+              onClick={() => onSelectMode('channel-explorer')}
+              className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
+                currentMode === 'channel-explorer'
+                  ? 'bg-[#1b6b3c] text-white'
+                  : 'text-[#53504a] hover:text-[#1d1c19]'
+              }`}
+            >
+              Channels
+            </button>
+            <button
+              onClick={() => onSelectMode('physics-lab')}
+              className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
+                currentMode === 'physics-lab'
+                  ? 'bg-[#1b6b3c] text-white'
+                  : 'text-[#53504a] hover:text-[#1d1c19]'
+              }`}
+            >
+              Physics
+            </button>
+            <button
+              onClick={() => onSelectMode('algorithm-lab')}
+              className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
+                currentMode === 'algorithm-lab'
+                  ? 'bg-[#1b6b3c] text-white'
+                  : 'text-[#53504a] hover:text-[#1d1c19]'
+              }`}
+            >
+              Algorithms
+            </button>
+            <button
+              onClick={() => onSelectMode('data-studio')}
+              className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
+                currentMode === 'data-studio'
+                  ? 'bg-[#1b6b3c] text-white'
+                  : 'text-[#53504a] hover:text-[#1d1c19]'
+              }`}
+            >
+              Data Studio
+            </button>
+          </div>
+
+          {/* Day / Night Change Icon for User Experience */}
+          <div className="pl-2 border-l-2 border-[#b9b3a8]">
+            <DayNightToggle variant="navbar" />
+          </div>
         </div>
       </div>
     </header>

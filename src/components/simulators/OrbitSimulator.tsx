@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Pause, RotateCcw, Eye, Compass, Satellite, Sparkles } from 'lucide-react';
+import { Play, Pause, RotateCcw, Eye, Compass, Satellite, Sparkles, Sun, Moon } from 'lucide-react';
 
 export const OrbitSimulator: React.FC = () => {
   const [hour, setHour] = useState<number>(12); // 0 - 24 hours
@@ -71,6 +71,23 @@ export const OrbitSimulator: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => setHour(hour >= 6 && hour <= 18 ? 0 : 12)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#fffdf8] hover:bg-[#faf8f2] border-2 border-[#2a2825] text-[#1d1c19] text-xs font-mono font-bold shadow-[2px_2px_0_#2a2825] transition-all cursor-pointer active:translate-y-0.5"
+            title={hour >= 6 && hour <= 18 ? 'Jump to Night (00:00 UTC Midnight)' : 'Jump to Day (12:00 UTC Noon)'}
+          >
+            {hour >= 6 && hour <= 18 ? (
+              <>
+                <Moon className="w-3.5 h-3.5 text-cyan-500 fill-cyan-400" />
+                <span className="hidden sm:inline">Night</span>
+              </>
+            ) : (
+              <>
+                <Sun className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
+                <span className="hidden sm:inline">Day</span>
+              </>
+            )}
+          </button>
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#8a3c8f] hover:bg-[#722d76] border-2 border-[#2a2825] text-white text-xs font-mono font-bold shadow-[2px_2px_0_#2a2825] transition-all cursor-pointer active:translate-y-0.5"
