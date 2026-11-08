@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const currentChapter = COURSE_CHAPTERS.find(c => c.id === currentChapterId) || COURSE_CHAPTERS[0];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#faf8f2] border-b-2 border-[#b9b3a8] px-4 py-2.5 transition-colors">
+    <header className="sticky top-0 z-50 bg-[#faf8f2] dark:bg-[#0b1120] border-b-2 border-[#b9b3a8] dark:border-[#334155] px-4 py-2.5 transition-colors">
       <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Book Title & Series Badge */}
         <div className="flex items-center gap-3">
@@ -31,17 +31,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => onSelectMode('guide')}
             className="text-left cursor-pointer group flex items-center gap-2.5"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#10508f] border-2 border-[#2a2825] flex items-center justify-center text-white font-black text-sm shadow-[2px_2px_0_#2a2825]">
+            <div className="w-8 h-8 rounded-lg bg-[#10508f] dark:bg-[#0369a1] border-2 border-[#2a2825] dark:border-[#38bdf8] flex items-center justify-center text-white font-black text-sm shadow-[2px_2px_0_#2a2825]">
               IE
             </div>
             <div>
-              <div className="font-black text-base text-[#10508f] tracking-tight flex items-center gap-1.5 leading-none">
+              <div className="font-black text-base text-[#10508f] dark:text-[#38bdf8] tracking-tight flex items-center gap-1.5 leading-none">
                 <span>INSAT Explorer</span>
-                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#e2f3e7] text-[#1b6b3c] border border-[#1b6b3c]">
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#e2f3e7] dark:bg-[#064e3b] text-[#1b6b3c] dark:text-[#34d399] border border-[#1b6b3c] dark:border-[#059669]">
                   ISRO ATBD
                 </span>
               </div>
-              <div className="text-[11px] font-hand text-[#53504a] font-bold mt-0.5">
+              <div className="text-[11px] font-hand text-[#53504a] dark:text-[#94a3b8] font-bold mt-0.5">
                 an illustrated guide to weather from orbit
               </div>
             </div>
@@ -61,8 +61,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap border-2 ${
                   isActive
-                    ? 'bg-[#10508f] text-white border-[#2a2825] shadow-[2px_2px_0_#2a2825]'
-                    : 'bg-[#fffdf8] text-[#53504a] border-[#b9b3a8] hover:border-[#2a2825] hover:text-[#1d1c19]'
+                    ? 'bg-[#10508f] text-white border-[#2a2825] dark:border-[#38bdf8] shadow-[2px_2px_0_#2a2825]'
+                    : 'bg-[#fffdf8] dark:bg-[#151e2e] text-[#53504a] dark:text-[#cbd5e1] border-[#b9b3a8] dark:border-[#334155] hover:border-[#2a2825] dark:hover:border-[#38bdf8] hover:text-[#1d1c19] dark:hover:text-[#f8fafc]'
                 }`}
               >
                 Ch {chap.numberString}
@@ -74,13 +74,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Right Section: Labs Quick Jump + Day & Night Toggle */}
         <div className="flex items-center gap-2">
           {/* Labs Quick Jump */}
-          <div className="hidden lg:flex items-center gap-1 pl-2 border-l-2 border-[#b9b3a8] text-xs font-mono">
+          <div className="hidden lg:flex items-center gap-1 pl-2 border-l-2 border-[#b9b3a8] dark:border-[#334155] text-xs font-mono">
             <button
               onClick={() => onSelectMode('satellite-lab')}
               className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
                 currentMode === 'satellite-lab'
                   ? 'bg-[#1b6b3c] text-white'
-                  : 'text-[#53504a] hover:text-[#1d1c19]'
+                  : 'text-[#53504a] dark:text-[#cbd5e1] hover:text-[#1d1c19] dark:hover:text-[#f8fafc]'
               }`}
             >
               Satellite
@@ -90,7 +90,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
                 currentMode === 'channel-explorer'
                   ? 'bg-[#1b6b3c] text-white'
-                  : 'text-[#53504a] hover:text-[#1d1c19]'
+                  : 'text-[#53504a] dark:text-[#cbd5e1] hover:text-[#1d1c19] dark:hover:text-[#f8fafc]'
               }`}
             >
               Channels
@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
                 currentMode === 'physics-lab'
                   ? 'bg-[#1b6b3c] text-white'
-                  : 'text-[#53504a] hover:text-[#1d1c19]'
+                  : 'text-[#53504a] dark:text-[#cbd5e1] hover:text-[#1d1c19] dark:hover:text-[#f8fafc]'
               }`}
             >
               Physics
@@ -110,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
                 currentMode === 'algorithm-lab'
                   ? 'bg-[#1b6b3c] text-white'
-                  : 'text-[#53504a] hover:text-[#1d1c19]'
+                  : 'text-[#53504a] dark:text-[#cbd5e1] hover:text-[#1d1c19] dark:hover:text-[#f8fafc]'
               }`}
             >
               Algorithms
@@ -120,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className={`px-2 py-1 rounded-md transition-colors cursor-pointer font-bold ${
                 currentMode === 'data-studio'
                   ? 'bg-[#1b6b3c] text-white'
-                  : 'text-[#53504a] hover:text-[#1d1c19]'
+                  : 'text-[#53504a] dark:text-[#cbd5e1] hover:text-[#1d1c19] dark:hover:text-[#f8fafc]'
               }`}
             >
               Data Studio
@@ -128,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Day / Night Change Icon for User Experience */}
-          <div className="pl-2 border-l-2 border-[#b9b3a8]">
+          <div className="pl-2 border-l-2 border-[#b9b3a8] dark:border-[#334155]">
             <DayNightToggle variant="navbar" />
           </div>
         </div>

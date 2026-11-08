@@ -40,20 +40,20 @@ html.dark {
   --tint-b: #1e293b;
   --tint-c: #2a1b2d;
   --tint-d: #132e22;
-  --ink: #f1f5f9;
-  --ink2: #94a3b8;
-  --ink3: #64748b;
+  --ink: #f8fafc;
+  --ink2: #cbd5e1;
+  --ink3: #94a3b8;
   --line: #334155;
   --line-soft: #475569;
-  --hd-main: #0c4a6e;
-  --hd-det: #166534;
-  --hd-try: #701a75;
-  --flow: #f43f5e;
+  --hd-main: #38bdf8;
+  --hd-det: #4ade80;
+  --hd-try: #c084fc;
+  --flow: #f472b6;
   --dot-c: #38bdf8;
-  --dot-fill: #0c4a6e;
+  --dot-fill: #0c2d48;
   --core-c: #4ade80;
   --core-fill: #064e3b;
-  --shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+  --shadow: 3px 3px 0 rgba(0, 0, 0, 0.55);
 }
 
 body {
@@ -103,12 +103,16 @@ body {
   transform: rotate(-3deg);
 }
 
-/* Night Mode Overrides for High Contrast & Smooth Field Observation */
+/* =========================================================================
+   NIGHT OBSERVATORY MODE (HIGH-CONTRAST & CLEAR READABILITY)
+   ========================================================================= */
+
 html.dark body {
-  background-color: #0b1120;
-  color: #f1f5f9;
+  background-color: #0b1120 !important;
+  color: #f8fafc !important;
 }
 
+/* Containers & Card Backgrounds */
 html.dark .bg-\[\#faf8f2\] {
   background-color: #0b1120 !important;
 }
@@ -117,22 +121,128 @@ html.dark .bg-\[\#fffdf8\] {
   background-color: #151e2e !important;
 }
 
+html.dark .bg-\[\#f4f1ea\] {
+  background-color: #1a2638 !important;
+}
+
 html.dark .bg-white {
   background-color: #1a2538 !important;
 }
 
+html.dark .bg-\[\#eff1f4\] {
+  background-color: #1a2538 !important;
+}
+
+html.dark .bg-\[\#e5e0d3\] {
+  background-color: #334155 !important;
+}
+
+/* Special Alert Containers in Night Mode */
+html.dark .bg-\[\#fdf0f6\] {
+  background-color: #2b1227 !important;
+  border-color: #db2777 !important;
+}
+
+html.dark .bg-\[\#fce7f3\] {
+  background-color: #1a0b18 !important;
+  color: #fbcfe8 !important;
+}
+
+html.dark .bg-\[\#fff5f5\] {
+  background-color: #3b0d0c !important;
+  border-color: #ef4444 !important;
+}
+
+html.dark .bg-\[\#fee2e2\] {
+  background-color: #220505 !important;
+  color: #fca5a5 !important;
+  border-color: #7f1d1d !important;
+}
+
+html.dark .bg-\[\#dceeff\] {
+  background-color: #122844 !important;
+  border-color: #2563eb !important;
+}
+
+html.dark .bg-\[\#bde0fe\] {
+  background-color: #1e3a5f !important;
+}
+
+html.dark .bg-\[\#e2f3e7\] {
+  background-color: #0c2e1d !important;
+  border-color: #059669 !important;
+}
+
+html.dark .bg-\[\#c8e6c9\] {
+  background-color: #14462d !important;
+}
+
+html.dark .bg-\[\#fdf6dd\] {
+  background-color: #261f0f !important;
+  border-color: #854d0e !important;
+}
+
+html.dark .bg-\[\#f3e8ff\] {
+  background-color: #2b133d !important;
+  border-color: #a855f7 !important;
+}
+
+/* =========================================================================
+   TEXT COLORS IN NIGHT MODE (ENSURE ZERO INVISIBLE DARK INK)
+   ========================================================================= */
+
+/* Primary Ink Overrides */
 html.dark .text-\[\#1d1c19\] {
+  color: #f8fafc !important;
+}
+
+html.dark .text-\[\#2a2825\] {
   color: #f1f5f9 !important;
 }
 
+/* Secondary & Description Overrides */
 html.dark .text-\[\#53504a\] {
-  color: #94a3b8 !important;
+  color: #cbd5e1 !important;
 }
 
 html.dark .text-\[\#86817a\] {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 
+/* Accented Text in Night Mode */
+html.dark .text-\[\#10508f\] {
+  color: #38bdf8 !important; /* Bright cyan for maximum contrast on dark */
+}
+
+html.dark .text-\[\#0d6fd4\] {
+  color: #60a5fa !important;
+}
+
+html.dark .text-\[\#1b6b3c\],
+html.dark .text-\[\#15803d\],
+html.dark .text-\[\#166534\],
+html.dark .text-\[\#1c7a4a\] {
+  color: #4ade80 !important; /* Crisp emerald for night mode */
+}
+
+html.dark .text-\[\#d6197f\] {
+  color: #f472b6 !important;
+}
+
+html.dark .text-\[\#831843\] {
+  color: #fbcfe8 !important;
+}
+
+html.dark .text-\[\#b2342c\],
+html.dark .text-\[\#7f1d1d\] {
+  color: #f87171 !important;
+}
+
+html.dark .text-\[\#8a3c8f\] {
+  color: #c084fc !important;
+}
+
+/* Borders in Night Mode */
 html.dark .border-\[\#2a2825\] {
   border-color: #334155 !important;
 }
@@ -141,16 +251,25 @@ html.dark .border-\[\#b9b3a8\] {
   border-color: #475569 !important;
 }
 
+/* Shadows in Night Mode */
 html.dark .shadow-\[2px_2px_0_\#2a2825\] {
-  box-shadow: 2px 2px 0 #1e293b !important;
+  box-shadow: 2px 2px 0 #0f172a !important;
 }
 
 html.dark .shadow-\[3px_3px_0_rgba\(42\,40\,37\,0\.15\)\] {
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark .shadow-\[3px_3px_0_rgba\(42\,40\,37\,0\.12\)\] {
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6) !important;
+}
+
+html.dark .shadow-\[3px_3px_0_rgba\(42\,40\,37\,0\.14\)\] {
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6) !important;
 }
 
 html.dark .shadow-\[3px_3px_0_\#2a2825\] {
-  box-shadow: 3px 3px 0 #1e293b !important;
+  box-shadow: 3px 3px 0 #0f172a !important;
 }
 
 html.dark .shadow-\[4px_4px_0_\#2a2825\] {
@@ -160,11 +279,30 @@ html.dark .shadow-\[4px_4px_0_\#2a2825\] {
 html.dark .book-box {
   background-color: #151e2e !important;
   border-color: #334155 !important;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.6) !important;
 }
 
+/* =========================================================================
+   KATEX MATH FORMULAS IN NIGHT MODE
+   ========================================================================= */
+
 html.dark .katex {
-  color: #f1f5f9 !important;
+  color: #f8fafc !important;
+}
+
+html.dark .katex .mord,
+html.dark .katex .mbin,
+html.dark .katex .mrel,
+html.dark .katex .mopen,
+html.dark .katex .mclose,
+html.dark .katex .mpunct,
+html.dark .katex .minner,
+html.dark .katex .mop {
+  color: #f8fafc !important;
+}
+
+html.dark .katex-display {
+  color: #f8fafc !important;
 }
 
 /* Slow Sun Spin */
